@@ -5,6 +5,7 @@ defmodule Chatty.Chat do
   end
   def init([]) do
     children = [
+      worker(Chatty.Chat.Reactor, [])
     ]
     supervise(children, strategy: :one_for_one)
   end
