@@ -4,7 +4,7 @@ defmodule Chatty.Web.Await do
   end
   def handle(req, state) do
     {:ok, _msgs} = Chatty.Chat.Reactor.await
-    {:ok, req} = :cowboy_req.reply(200, [{"content-type", "application/json"}], [Poison.encode!(%{poll: true}), "\n"], req)
+    {:ok, req} = :cowboy_req.reply(200, [{"content-type", "application/json"}], "", req)
     {:ok, req, state}
   end
   def terminate(_reason, _req, _state) do
