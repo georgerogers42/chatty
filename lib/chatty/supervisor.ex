@@ -12,6 +12,6 @@ defmodule Chatty.Supervisor do
   end
 
   defp port do
-    String.to_integer(System.get_env("PORT") || "8080")
+    String.to_integer(System.get_env("PORT") || "5000")
   end
 end

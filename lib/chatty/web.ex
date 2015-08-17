@@ -4,6 +4,9 @@ defmodule Chatty.Web do
       {:_,
         [
           {"/", Chatty.Web.Index, %{}},
+          {"/recv", Chatty.Web.Recv, %{}},
+          {"/await", Chatty.Web.Await, %{}},
+          {"/send", Chatty.Web.Send, %{}},
         ]
       },
     ]
