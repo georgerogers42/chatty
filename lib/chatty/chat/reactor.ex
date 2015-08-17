@@ -1,5 +1,6 @@
 defmodule Chatty.Chat.Reactor do
+  use GenServer
   def start_link do
-    Chan.start_link
+    GenServer.start_link
   end
 end
