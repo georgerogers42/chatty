@@ -1,5 +1,6 @@
 defmodule Chatty.Web.Send do
   def init(_kind, req, state) do
+    {"POST", req} = :cowboy_req.method(req)
     {:ok, req, state}
   end
   def handle(req, state) do
