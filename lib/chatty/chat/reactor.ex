@@ -23,12 +23,12 @@ defmodule Chatty.Chat.Reactor do
   end
 
   def await(reactor \\ __MODULE__, timeout \\ :infinity) do
-    GenServer.call(reactor, :await, timeout)
+    {:ok, _msgs} = GenServer.call(reactor, :await, timeout)
   end
   def get(reactor \\ __MODULE__) do
-    GenServer.call(reactor, :get)
+    {:ok, _msgs} = GenServer.call(reactor, :get)
   end
   def put(reactor \\ __MODULE__, msg) do
-    GenServer.call(reactor, {:put, msg})
+    :ok = GenServer.call(reactor, {:put, msg})
   end
 end
