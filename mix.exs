@@ -35,6 +35,7 @@ defmodule Chatty.Mixfile do
     [
       {:cowboy, "~> 1.0.0"},
       {:poison, ">= 0.0.0"},
+      {:timex, ">= 0.0.0"},
     ]
   end
 end
