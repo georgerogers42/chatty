@@ -3,3 +3,8 @@ body {
   color: #0f0;
   font-family: 'Inconsolata', monospace;
 }
+
+div.msgs {
+  height: 2in;
+  overflow: scroll;
+}

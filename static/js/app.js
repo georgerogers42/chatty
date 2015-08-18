@@ -5,6 +5,11 @@ require(["jquery", "underscore"], function($, _) {
       $("#msgs").text(_.map(d.reverse(), function(l) {
         return l.join(": ");
       }).join("\n"));
+      $(".msgs").each(function() {
+        var self = this;
+        var $self = $(self);
+        $self.scrollTop($self.children().height());
+      });
     });
   };
   (function upoll(u) {
@@ -15,7 +20,7 @@ require(["jquery", "underscore"], function($, _) {
   }("/await"));
   $.ajax("/recv").success(update);
   $(function() {
-    $("#send").on("submit", function(evt) {
+    $("form#send").on("submit", function(evt) {
       var self = this;
       var $self = $(self);
       var $msg = $self.find("[name=msg]");
