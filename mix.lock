@@ -1,8 +1,0 @@
-%{"chan": {:git, "https://bitbucket.org/georgerogers42/chan.git", "a5746b8cfaf86622cfaa860da5f1ddeb5c2d0fb2", []},
-  "combine": {:hex, :combine, "0.5.2"},
-  "cowboy": {:hex, :cowboy, "1.0.2"},
-  "cowlib": {:hex, :cowlib, "1.0.1"},
-  "poison": {:hex, :poison, "1.4.0"},
-  "ranch": {:hex, :ranch, "1.1.0"},
-  "timex": {:hex, :timex, "0.19.2"},
-  "tzdata": {:hex, :tzdata, "0.1.7"}}
