@@ -7,7 +7,7 @@
     <title>Chatty</title>
   </head>
   <body>
-    <div class="msgs"><pre id="msgs"></pre></div>
+    <div id="msgs-scroll"><pre id="msgs"></pre></div>
     <form id="send" method="POST" action="/send">
       <input type="text" name="user">
       <input type="text" name="msg">

@@ -4,7 +4,7 @@ body {
   font-family: 'Inconsolata', monospace;
 }
 
-div.msgs {
+div#msgs-scroll {
   height: 2in;
   overflow: scroll;
 }

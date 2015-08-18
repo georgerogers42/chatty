@@ -5,7 +5,7 @@ require(["jquery", "underscore"], function($, _) {
       $("#msgs").text(_.map(d.reverse(), function(l) {
         return l.join(": ");
       }).join("\n"));
-      $(".msgs").each(function() {
+      $("#msgs-scroll").each(function() {
         var self = this;
         var $self = $(self);
         $self.scrollTop($self.children().height());
