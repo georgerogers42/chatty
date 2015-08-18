@@ -1,9 +1,15 @@
 <!doctype html>
 <html>
   <head>
-    <title>Hello World</title>
+    <meta charset="UTF-8">
+    <title>Chatty</title>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <form id="send" method="POST" action="/send">
+      <input type="text" name="msg">
+      <input type="submit" value="Send">
+    </form>
+    <pre id="msgs"></pre>
+    <script src="/static/js/jam/require.js" data-main="/static/js/app.js"></script>
   </body>
 </html>

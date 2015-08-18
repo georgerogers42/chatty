@@ -4,8 +4,10 @@ defmodule Chatty.Web.Send do
     {:ok, req, state}
   end
   def handle(req, state) do
-    {msg, req} = :cowboy_req.qs_val("msg", req)
-    :ok = Chatty.Chat.Reactor.put(msg)
+    {:ok, vals, req} = :cowboy_req.body_qs(req)
+    vals = vals |> Enum.into(HashDict.new)
+    :ok = Chatty.Chat.Reactor.put(vals["msg"])
+    {:ok, req} = :cowboy_req.reply(302, [{"location", "/"}], "", req)
     {:ok, req, state}
   end
   def terminate(_reason, _req, _state) do

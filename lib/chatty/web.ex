@@ -7,6 +7,7 @@ defmodule Chatty.Web do
           {"/recv", Chatty.Web.Recv, %{}},
           {"/await", Chatty.Web.Await, %{}},
           {"/send", Chatty.Web.Send, %{}},
+          {"/static/[...]", :cowboy_static, {:dir, "static"}},
         ]
       },
     ]
