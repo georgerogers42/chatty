@@ -36,7 +36,6 @@ defmodule Chatty.Mixfile do
       {:cowboy, "~> 1.0.0"},
       {:poison, ">= 0.0.0"},
       {:timex, ">= 0.0.0"},
-      {:chan, ">= 0.0.2", git: "https://bitbucket.org/georgerogers42/chan.git"},
     ]
   end
 end
