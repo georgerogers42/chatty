@@ -20,7 +20,10 @@ require(["jquery", "underscore"], function($, _) {
       upoll(u);
     });
   }("/await"));
-  $.ajax("/recv").success(update);
+  $.ajax("/recv").success(function(d) {
+    update(d);
+    rescroll();
+  });
   $(function() {
     $("form#send").on("submit", function(evt) {
       var self = this;
