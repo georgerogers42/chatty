@@ -5,6 +5,6 @@ body {
 }
 
 div#msgs-scroll {
-  height: 2in;
+  height: 80%;
   overflow: scroll;
 }
