@@ -1,11 +1,8 @@
 require(["jquery", "underscore"], function($, _) {
   "use strict";
   var rescroll = function() {
-    $("#msgs-scroll").each(function() {
-      var self = this;
-      var $self = $(self);
-      $self.scrollTop($self.children().height());
-    });
+    var $msgs = $("#msgs-scroll");
+    $msgs.scrollTop($msgs.children().height());
   };
   var update = function(d) {
     $(function() {
