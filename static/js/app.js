@@ -38,7 +38,6 @@ require(["jquery", "underscore"], function($, _) {
       }).success(function() {
         $msg.val("");
         rescroll();
-        $.ajax("/recv").success(update);
       });
     });
   });
