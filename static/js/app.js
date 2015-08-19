@@ -1,15 +1,17 @@
 require(["jquery", "underscore"], function($, _) {
   "use strict";
+  var rescroll = function() {
+    $("#msgs-scroll").each(function() {
+      var self = this;
+      var $self = $(self);
+      $self.scrollTop($self.children().height());
+    });
+  };
   var update = function(d) {
     $(function() {
       $("#msgs").text(_.map(d.reverse(), function(l) {
         return l.join(": ");
       }).join("\n"));
-      $("#msgs-scroll").each(function() {
-        var self = this;
-        var $self = $(self);
-        $self.scrollTop($self.children().height());
-      });
     });
   };
   (function upoll(u) {
@@ -32,7 +34,10 @@ require(["jquery", "underscore"], function($, _) {
         data: {msg: $msg.val(), user: $user.val()}
       }).success(function() {
         $msg.val("");
-        $.ajax("/recv").success(update);
+        $.ajax("/recv").success(function(d) {
+          update(d);
+          rescroll();
+        });
       });
     });
   });
