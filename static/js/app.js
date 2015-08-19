@@ -17,6 +17,7 @@ require(["jquery", "underscore"], function($, _) {
   (function upoll(u) {
     $.ajax(u).success(function(d) {
       update(d);
+      rescroll();
       upoll(u);
     });
   }("/await"));
