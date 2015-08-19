@@ -34,10 +34,8 @@ require(["jquery", "underscore"], function($, _) {
         data: {msg: $msg.val(), user: $user.val()}
       }).success(function() {
         $msg.val("");
-        $.ajax("/recv").success(function(d) {
-          update(d);
-          rescroll();
-        });
+        rescroll();
+        $.ajax("/recv").success(update);
       });
     });
   });
