@@ -13,10 +13,13 @@ defmodule Chatty.Chat.Reactor do
   def handle_call(:get, _from, state) do
     {:reply, {:ok, state.messages}, state}
   end
+  def handle_call({:put, msg}, _from, state = %Chatty.Chat.Reactor{ await_queue: [] }) do
+    {:reply, :ok, %{ state | messages: [msg|state.messages] }}
+  end
   def handle_call({:put, msg}, _from, state) do
     msgs = [msg|state.messages]
     Enum.each(state.await_queue, &GenServer.reply(&1, {:ok, msgs}))
-    {:reply, :ok, %{ state | await_queue: [], messages: msgs }}
+    {:reply, :ok, %{ state | await_queue: [], messages: [] }}
   end
   def handle_call(_msg, _from, state) do
     {:reply, {:error, :badmsg}, state}
