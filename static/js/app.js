@@ -24,6 +24,11 @@ require(["jquery", "underscore"], function($, _) {
         upoll(u);
       });
     }(room() + "/await"));
+    $.ajax({
+      url: room() + "/send",
+      method: "POST",
+      data: {msg: "Joined", user: "anonymoose"}
+    });
     $("form#send").on("submit", function(evt) {
       evt.preventDefault();
       var self = this;

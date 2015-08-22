@@ -3,7 +3,8 @@ defmodule Chatty.Web.Index do
   def init(_kind, req, state) do
     {"GET", req} = :cowboy_req.method(req)
     {room, req} = :cowboy_req.binding(:room, req)
-    state = Dict.put state, :room, room
+    {{ip, _port}, req} = :cowboy_req.peer(req)
+    state = Enum.into [{:room, room}, {:ip, ip}], state
     {:ok, req, state}
   end
   def handle(req, state) do
