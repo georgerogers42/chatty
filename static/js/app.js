@@ -9,7 +9,7 @@ require(["jquery", "underscore"], function($, _) {
     $msgs.scrollTop($msgs.children().height());
   };
   var update = function(d) {
-    messages = messages.concat(d.reverse());
+    [].push.apply(messages, d.reverse());
     $(function() {
       $("#msgs").text(_.map(messages, function(l) {
         return l.join(": ");
