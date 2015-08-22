@@ -24,10 +24,6 @@ require(["jquery", "underscore"], function($, _) {
         upoll(u);
       });
     }(room() + "/await"));
-    $.ajax(room() + "/recv").success(function(d) {
-      update(d);
-      rescroll();
-    });
     $("form#send").on("submit", function(evt) {
       evt.preventDefault();
       var self = this;
