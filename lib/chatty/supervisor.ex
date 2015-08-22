@@ -8,7 +8,7 @@ defmodule Chatty.Supervisor do
       worker(Chatty.Web, [p]),
       worker(Chatty.Chat, []),
     ]
-    supervise(children, strategy: :one_for_all)
+    supervise(children, strategy: :one_for_one)
   end
 
   defp port do
