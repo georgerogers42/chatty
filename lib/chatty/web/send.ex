@@ -10,7 +10,7 @@ defmodule Chatty.Web.Send do
     {name, req} = :cowboy_req.binding(:room, req)
     {:ok, room} = Chatty.Chat.room(name)
     Chatty.Chat.Reactor.put(room, [Date.now |> DateFormat.format!("{ISOz}"), vals["user"], vals["msg"]])
-    {:ok, req} = :cowboy_req.reply(302, [{"location", "/"}], "", req)
+    {:ok, req} = :cowboy_req.reply(302, [{"location", "/#{name}/"}], "", req)
     {:ok, req, state}
   end
   def terminate(_reason, _req, _state) do
