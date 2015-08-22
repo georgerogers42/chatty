@@ -1,8 +1,8 @@
 defmodule Chatty.Chat.Reactor do
   use GenServer
   defstruct await_queue: [], messages: []
-  def start_link(params \\ [name: __MODULE__]) do
-    GenServer.start_link(__MODULE__, [], params)
+  def start_link do
+    GenServer.start_link(__MODULE__, [])
   end
   def init([]) do
     {:ok, %Chatty.Chat.Reactor{}}
@@ -25,13 +25,13 @@ defmodule Chatty.Chat.Reactor do
     {:reply, {:error, :badmsg}, state}
   end
 
-  def await(reactor \\ __MODULE__, timeout \\ :infinity) do
+  def await(reactor, timeout \\ :infinity) do
     {:ok, _msgs} = GenServer.call(reactor, :await, timeout)
   end
-  def get(reactor \\ __MODULE__) do
+  def get(reactor) do
     {:ok, _msgs} = GenServer.call(reactor, :get)
   end
-  def put(reactor \\ __MODULE__, msg) do
+  def put(reactor, msg) do
     :ok = GenServer.call(reactor, {:put, msg})
   end
 end

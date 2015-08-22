@@ -1,6 +1,8 @@
 defmodule Chatty.Web.Await do
   def init(_kind, req, _state) do
-    {:ok, state} = Chatty.Chat.Reactor.await
+    {name, req} = :cowboy_req.binding(:room, req)
+    {:ok, room} = Chatty.Chat.room name
+    {:ok, state} = Chatty.Chat.Reactor.await room
     {:ok, req, state}
   end
   def handle(req, state) do

@@ -1,6 +1,8 @@
 defmodule Chatty.Web.Recv do
   def init(_kind, req, state) do
-    {:ok, msgs} = Chatty.Chat.Reactor.get
+    {name, req} = :cowboy_req.binding(:room, req)
+    {:ok, room} = Chatty.Chat.room name
+    {:ok, msgs} = Chatty.Chat.Reactor.get room
     {:ok, req, msgs}
   end
   def handle(req, state) do

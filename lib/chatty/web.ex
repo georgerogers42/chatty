@@ -3,11 +3,11 @@ defmodule Chatty.Web do
     [
       {:_,
         [
-          {"/", Chatty.Web.Index, %{}},
-          {"/recv", Chatty.Web.Recv, %{}},
-          {"/await", Chatty.Web.Await, %{}},
-          {"/send", Chatty.Web.Send, %{}},
           {"/static/[...]", :cowboy_static, {:dir, "static"}},
+          {"/:room/", Chatty.Web.Index, %{}},
+          {"/:room/recv", Chatty.Web.Recv, %{}},
+          {"/:room/await", Chatty.Web.Await, %{}},
+          {"/:room/send", Chatty.Web.Send, %{}},
         ]
       },
     ]

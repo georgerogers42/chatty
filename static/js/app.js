@@ -1,6 +1,9 @@
 require(["jquery", "underscore"], function($, _) {
   "use strict";
   var messages = [];
+  var room = function() {
+    return "/" + $("#msgs-room").val();
+  };
   var rescroll = function() {
     var $msgs = $("#msgs-scroll");
     $msgs.scrollTop($msgs.children().height());
@@ -13,18 +16,18 @@ require(["jquery", "underscore"], function($, _) {
       }).join("\n"));
     });
   };
-  (function upoll(u) {
-    $.ajax(u).success(function(d) {
-      upoll(u);
+  $(function() {
+    (function upoll(u) {
+      $.ajax(u).success(function(d) {
+        upoll(u);
+        update(d);
+        rescroll();
+      });
+    }(room() + "/await"));
+    $.ajax(room() + "/recv").success(function(d) {
       update(d);
       rescroll();
     });
-  }("/await"));
-  $.ajax("/recv").success(function(d) {
-    update(d);
-    rescroll();
-  });
-  $(function() {
     $("form#send").on("submit", function(evt) {
       evt.preventDefault();
       var self = this;
@@ -32,7 +35,7 @@ require(["jquery", "underscore"], function($, _) {
       var $msg = $self.find("[name=msg]");
       var $user = $self.find("[name=user]");
       $.ajax({
-        url: "/send",
+        url: room() + "/send",
         method: "POST",
         data: {msg: $msg.val(), user: $user.val()}
       }).success(function() {

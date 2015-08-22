@@ -8,3 +8,7 @@ div#msgs-scroll {
   height: 6in;
   overflow: scroll;
 }
+
+pre {
+  height: 100%;
+}
