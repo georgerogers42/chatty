@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta charset="UTF-8">
+    <title>Chatty</title>
+  </head>
+  <body>
+    <form id="send" method="POST" action="/">
+      <input type="text" name="room" value="chatty">
+      <input type="submit" value="Choose">
+    </form>
+  </body>
+</html>
