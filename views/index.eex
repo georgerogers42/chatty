@@ -8,7 +8,7 @@
   <body>
     <input type="hidden" id="msgs-room" value="<%= @room %>">
     <div id="msgs-scroll"><pre id="msgs"></pre></div>
-    <form id="send" method="POST" action="/send">
+    <form id="send" method="POST" action="/<%= @room %>/send">
       <input type="text" name="user" value="<%= @ip %>">
       <input type="text" name="msg">
       <input type="submit" value="Send">

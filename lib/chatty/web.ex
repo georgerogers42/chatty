@@ -1,16 +1,11 @@
 defmodule Chatty.Web do
   def routes do
-    [
-      {:_,
-        [
-          {"/static/[...]", :cowboy_static, {:dir, "static"}},
-          {"/:room/", Chatty.Web.Index, %{}},
-          {"/:room/recv", Chatty.Web.Recv, %{}},
-          {"/:room/await", Chatty.Web.Await, %{}},
-          {"/:room/send", Chatty.Web.Send, %{}},
-        ]
-      },
-    ]
+    [{:_, [{"/", Chatty.Web.Home, %{}},
+           {"/static/[...]", :cowboy_static, {:dir, "static"}},
+           {"/:room/", Chatty.Web.Index, %{}},
+           {"/:room/recv", Chatty.Web.Recv, %{}},
+           {"/:room/await", Chatty.Web.Await, %{}},
+           {"/:room/send", Chatty.Web.Send, %{}}]}]
   end
   def dispatch do
     :cowboy_router.compile(routes)

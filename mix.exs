@@ -2,24 +2,20 @@ defmodule Chatty.Mixfile do
   use Mix.Project
 
   def project do
-    [
-      app: :chatty,
-      version: "0.0.2",
-      elixir: "~> 1.0",
-      build_embedded: Mix.env == :prod,
-      start_permanent: Mix.env == :prod,
-      deps: deps,
-    ]
+    [app: :chatty,
+     version: "0.0.2",
+     elixir: "~> 1.0",
+     build_embedded: Mix.env == :prod,
+     start_permanent: Mix.env == :prod,
+     deps: deps]
   end
 
   # Configuration for the OTP application
   #
   # Type `mix help compile.app` for more information
   def application do
-    [
-      applications: [:logger, :cowboy],
-      mod: {Chatty, []},
-    ]
+    [applications: [:logger, :cowboy],
+     mod: {Chatty, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -32,10 +28,8 @@ defmodule Chatty.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [
-      {:cowboy, "~> 1.0.0"},
-      {:poison, ">= 0.0.0"},
-      {:timex, ">= 0.0.0"},
-    ]
+    [{:cowboy, "~> 1.0.0"},
+     {:poison, ">= 0.0.0"},
+     {:timex, ">= 0.0.0"}]
   end
 end

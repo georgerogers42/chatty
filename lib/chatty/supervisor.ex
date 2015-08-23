@@ -4,10 +4,8 @@ defmodule Chatty.Supervisor do
     Supervisor.start_link(__MODULE__, [p])
   end
   def init([p]) do
-    children = [
-      worker(Chatty.Web, [p]),
-      worker(Chatty.Chat, []),
-    ]
+    children = [worker(Chatty.Web, [p]),
+                worker(Chatty.Chat, [])]
     supervise(children, strategy: :one_for_one)
   end
 
